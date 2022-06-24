@@ -84,3 +84,5 @@ Eigen 似乎并不支持三维张量，但是通过<size_t>也能将二维矩阵
 ```matlab
  mex '-I\Intel\mkl\latest\include' eigen_e2drtm_single.cpp
  ```
+### 适用条件
+矩阵计算等Eigen优化好的算法。不适用于FFT等。
