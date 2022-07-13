@@ -32,3 +32,6 @@ matlab
 值得注意的是，DISPLAY环境变量将自动设置为:0:0
 我们设置的DISPLAY=127.0.0.1:2.0中2.0的2和ssh中6002的2是同一个数字，具体可以搜索linux DISPLAY。
 总之在实验室ssh能不用GUI就不要用，因为2.4gHz信号干扰太多，每天更换信道还是很卡
+
+# 其他命令  
+ssh user2@localhost -p 33 -o ProxyCommand='ssh -p 32 User@222.27.79.26 -W %h:%p' [111](https://my.oschina.net/foreverich/blog/657075)
