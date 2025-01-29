@@ -52,7 +52,12 @@ cd matlabinstall
 
 **intel complier**
 wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/163da6e4-56eb-4948-aba3-debcec61c064/l_BaseKit_p_2024.0.1.46_offline.sh
+sh ./l_BaseKit_p_2024.0.1.46_offline.sh
 
+
+**cuda118**
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+sh ./cuda_11.8.0_520.61.05_linux.run
 
 **config SPECFEM CPU**
 source /data/zhangchang/intel/oneapi/setvars.sh
