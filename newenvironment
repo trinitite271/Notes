@@ -63,6 +63,7 @@ sh ./cuda_11.8.0_520.61.05_linux.run
 **config SPECFEM CPU**
 source /data/zhangchang/intel/oneapi/setvars.sh
 ./configure FC=ifort  MPIFC=mpiifort --with-mpi
+./configure FC=gfortran CC=gcc MPIFC=mpif90 --with-mpi --with-cuda=cuda11 CUDA_LIB=/usr/local/cuda/lib64 --enable-vectorization
 
 
 
