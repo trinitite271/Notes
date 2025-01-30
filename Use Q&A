@@ -1,0 +1,56 @@
+Q&A
+
+如果运行伴随源的时候出现如下问题（在./scratch/solver/mainsolver/adj_solver.log）： Sorry, approximate elastic Hessian kernels not yet fully implemented for GPU simulations!
+临时的解决方案是，只计算Hessian1，不计算Hessian2（反正我们也不需要）
+在 ./seisflows/seisflows/solver/specfem.py中搜索： SIMULATION_TYPE
+当 SIMULATION_TYPE == 1
+添加 setpar(key="APPROXIMATE_HESS_KL", val=".true.", file="DATA/Par_file")
+当 SIMULATION_TYPE == 3
+添加 setpar(key="APPROXIMATE_HESS_KL", val=".false.", file="DATA/Par_file")
+
+最后的效果应该是
+
+        setpar(key="SIMULATION_TYPE", val="1", file="DATA/Par_file")
+        setpar(key="APPROXIMATE_HESS_KL", val=".true.", file="DATA/Par_file")
+        setpar(key="SAVE_FORWARD", val=f".{str(flag_save_forward).lower()}.",
+               file="DATA/Par_file")
+（中间省略代码）
+        setpar(key="SIMULATION_TYPE", val="3", file="DATA/Par_file")
+        setpar(key="APPROXIMATE_HESS_KL", val=".false.", file="DATA/Par_file")
+        setpar(key="SAVE_FORWARD", val=".false.", file="DATA/Par_file")
+
+
+长久的方案是等待SPECFEM支持
+
+### Q&A
+
+**Q:** What should I do if I encounter the following issue while running the adjoint source (in `./scratch/solver/mainsolver/adj_solver.log`):  
+`Sorry, approximate elastic Hessian kernels not yet fully implemented for GPU simulations!`?
+
+**A:**  
+As a temporary solution, you can compute only Hessian1 and skip Hessian2 (since we don't need it anyway).  
+
+1. In `./seisflows/seisflows/solver/specfem.py`, search for: `SIMULATION_TYPE`.  
+2. When `SIMULATION_TYPE == 1`, add:  
+   ```python
+   setpar(key="APPROXIMATE_HESS_KL", val=".true.", file="DATA/Par_file")
+   ```  
+3. When `SIMULATION_TYPE == 3`, add:  
+   ```python
+   setpar(key="APPROXIMATE_HESS_KL", val=".false.", file="DATA/Par_file")
+   ```  
+
+The final implementation should look like this:  
+
+```python
+setpar(key="SIMULATION_TYPE", val="1", file="DATA/Par_file")
+setpar(key="APPROXIMATE_HESS_KL", val=".true.", file="DATA/Par_file")
+setpar(key="SAVE_FORWARD", val=f".{str(flag_save_forward).lower()}.", file="DATA/Par_file")
+# (omitted code)
+setpar(key="SIMULATION_TYPE", val="3", file="DATA/Par_file")
+setpar(key="APPROXIMATE_HESS_KL", val=".false.", file="DATA/Par_file")
+setpar(key="SAVE_FORWARD", val=".false.", file="DATA/Par_file")
+```  
+
+**Long-term Solution:**  
+Wait for SPECFEM to fully support this feature in future updates.
