@@ -70,7 +70,14 @@ make all
 
 **debug**
 python -m pdb /data/zhangchang/seisflows/seisflows/system/runscripts/submit --workdir /data/zhangchang/projects/VGdataGPSTinv --parameter_file parameters.yaml
-
+os.environ['DISPLAY'] = '127.0.0.1:25.0'
+plt.figure()
+<Figure size 640x480 with 0 Axes>
+import matplotlib
+matplotlib.use('TkAgg')
+plt.figure()
+plt.show()
+plt.imshow(grad_output2, cmap='jet', aspect='auto');plt.colorbar();plt.show()
 
 
 
