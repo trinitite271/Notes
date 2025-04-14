@@ -69,7 +69,8 @@ sh ./cuda_11.8.0_520.61.05_linux.run
 make all
 
 **debug**
-python -m pdb /data/zhangchang/seisflows/seisflows/system/runscripts/submit --workdir /data/zhangchang/projects/VGdataGPSTinv --parameter_file parameters.yaml
+# python -m pdb /data/zhangchang/seisflows/seisflows/system/runscripts/submit --workdir /data/zhangchang/projects/VGdataGPSTinv --parameter_file parameters.yaml
+python -m pdb /csim1/zhangchang/seisflow_devel/seisflows/system/runscripts/submit --workdir /csim1/zhangchang/shenzhenGPSTinv --parameter_file parameters.yaml
 os.environ['DISPLAY'] = '127.0.0.1:25.0';import matplotlib;matplotlib.use('TkAgg');plt.figure();plt.show()
 plt.imshow(grad_output2, cmap='jet', aspect='auto');plt.colorbar();plt.show()
 
