@@ -75,5 +75,9 @@ os.environ['DISPLAY'] = '127.0.0.1:25.0';import matplotlib;matplotlib.use('TkAgg
 plt.imshow(grad_output2, cmap='jet', aspect='auto');plt.colorbar();plt.show()
 
 
+**debug CE6**
+from matplotlib import pyplot
+pyplot.figure()
+pyplot.imshow(data,aspect='auto')
 
-
+pyplot.savefig('temp.png')
